@@ -7,12 +7,16 @@
 }
 .navbar {
 	background-color: #FFFFFF !important;
+	box-shadow: 0 0px 3px rgba(0, 0, 0, 0.3) !important;
 }
 .nav-link{
 	color: #828282 !important;
 }
-.navbar-dark, .navbar-toggler {
+.navbar-dark, .navbar-toggler{
 	border-color: #828282 !important;
+}
+.navbar-toggler-icon {
+	background-image: url(../img/menu.png);
 }
 
 .cover{
@@ -28,11 +32,13 @@
 	background: url(../img/product_banner.png);
 	background-repeat: no-repeat;
 	background-size: cover;
+
 }
 .display-3, .display-4{
 	color: #FFFFFF !important;
 	text-align: center;
 	font-size: 2.5em !important;
+	
 }
 .my-4{
 	background: url(../img/about_banner.png);
@@ -44,3 +50,18 @@
 	text-align: center !important;
 
 }
+#map {
+        height: 400px;
+        width: 100%;
+        margin-bottom: 2em;
+}
+.navbar-nav {
+	text-shadow: none !important;
+}
+
+
+
+
+
+
+
