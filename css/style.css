@@ -1,0 +1,46 @@
+/* Stylesheet */
+
+.landing {
+	background: url(../img/homebg.png);
+	background-repeat: no-repeat;
+	 background-size: cover;
+}
+.navbar {
+	background-color: #FFFFFF !important;
+}
+.nav-link{
+	color: #828282 !important;
+}
+.navbar-dark, .navbar-toggler {
+	border-color: #828282 !important;
+}
+
+.cover{
+	top:0 !important;
+	bottom: :0 !important;
+	left: 0 !important;
+	right: 0 !important;
+	position:relative !important;
+	margin: auto !important;
+	text-align: center !important;
+}
+.my-3 {
+	background: url(../img/product_banner.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.display-3, .display-4{
+	color: #FFFFFF !important;
+	text-align: center;
+	font-size: 2.5em !important;
+}
+.my-4{
+	background: url(../img/about_banner.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.col-xs-9{
+	text-align: center !important;
+
+}
