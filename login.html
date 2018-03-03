@@ -161,7 +161,9 @@
 
             logoutAuth.signOut().then(function() {
                 showingEmail.style.display = "none";
+                showingName.style.display = "none";
                 googleSign.style.display = "block";
+                loBtn.style.display = "none";
                 console.log('sign out succeeded');
             });
         }
