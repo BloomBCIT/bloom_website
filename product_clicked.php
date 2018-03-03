@@ -71,7 +71,7 @@
 
                 <div class="product group">
                     <div class="col-1-2 product-image">
-                        <img id='img_product' src='./img/<?php echo $row['image']; ?>'/>
+                        <img id='img_product1' src='./img/<?php echo $row['image']; ?>'/>
                     </div>
                     <div class="col-1-2 product-info">
                         <h1><?php echo $row['product_name']; ?></h1>

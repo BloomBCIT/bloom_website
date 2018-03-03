@@ -103,3 +103,9 @@
     margin:auto;
 }
 
+#img_product{
+    height:300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
