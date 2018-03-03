@@ -78,21 +78,25 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container">
+    <div id= "logincontainer" class="container">
 
-        <main role="main" class="inner cover">
+        <main id= "loginmain" role="main" class="inner cover">
             <h1 class="cover-heading"></h1>
             <p class="lead"><b>LOG IN / CREATE ACCOUNT</b>
                 <br/>
             </p>
             <div class="login-card" id="loginCard">
+                <p id="showingName"></p>
                 <p id="showingEmail"></p>
-                <br>
-                <form>
-                    <div id="googleSign" class="g-signin2" data-onsuccess="signIn" data-width="390" data-height="40" data-longtitle="true">Login With Google</div>
+                <br/>
+                <br/>
+                <form id="loginform">
+                    <div id="googleSign" class="g-signin2" data-onsuccess="signIn" data-width="300" data-height="40" data-longtitle="true">Login With Google</div>
 
                 </form>
+                <div id="signoutDiv">
                 <button onclick="signOut()" id="loBtn"> Log out</button>
+                </div>
             </div>
         </main>
 
@@ -111,12 +115,19 @@
     <script>
         var googleSign = document.getElementById("googleSign");
         var showingEmail = document.getElementById("showingEmail");
-
+        var showingName = document.getElementById("showingName");
+        var loBtn = document.getElementById("loBtn");
+        
         function signIn(googleUser) {
             var profile = googleUser.getBasicProfile();
             googleSign.style.display = "none";
+            
+            showingName.style.display = "block";
+            showingName.innerText = "Welcome! "+ profile.getName();
+            
             showingEmail.style.display = "block";
             showingEmail.innerText = profile.getEmail();
+            
 
             //get user values;
             var userkey = profile.Eea;
@@ -140,7 +151,9 @@
             }).then((json) => {
                 console.log(json);
             });
-
+            
+            loBtn.style.display="block";
+            
         }
 
         function signOut() {
