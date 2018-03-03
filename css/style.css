@@ -82,13 +82,16 @@
 }
 
 #loginCard{
-    width:80%;
-    position:absolute;
-    left:0;
-    right:0;
+    width:50%;
     margin:auto;
     
 }
+
+#loginform{
+    width:300px;    
+    margin:auto;
+}
+
 
 #signoutDiv{
     width:30%;
@@ -96,9 +99,7 @@
 }
 
 #loginform{
-    position:absolute;
-    left:0;
-    right:0;
+    width:300px;    
     margin:auto;
 }
 
