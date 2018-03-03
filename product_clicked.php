@@ -66,14 +66,17 @@
                             </div>
 
                             <br>
-                            <button type="submit" class="add-btn">Add To Cart</button>
+                            <button type="submit" class="btn btn-secondary">Add To Cart</button>
                         </form>
+
+                        
                         <p>
                             <?php echo $row['description']; ?>
                         </p>
 
                     </div>
                 </div>
+                <hr>
 
                 <!-- review -->
                 <div>
@@ -122,15 +125,16 @@
                 $sql = "SELECT review_id, reviewtext, reviewdate FROM review WHERE product_id = '".$_GET['product_id']."'";
                 $result = $conn->query($sql);
                 //Determines if there are results
+                $pid = $_GET['product_id'];
                 if ($result->num_rows > 0) {
 
                     while($row = $result->fetch_assoc()) {
-                    echo "<form action='?delete' method='post'>";
-                    echo "<p>". $row["review_id"]. " - ". $row["reviewtext"]. 
+                    echo "<form action='?delete&product_id=$pid' method='post' style='clear:both;'>";
+                    echo "<p style='display:inline;'>". $row["review_id"]. " - ". $row["reviewtext"]. 
                     " (posted on " . $row["reviewdate"] . ")</p>";?>
                                     <input type="hidden" name="review_id" value="<?php
                         echo $row['review_id']; ?>">
-                                    <input type="submit" value="DELETE">
+                                    <input type="submit" class="btn btn-secondary" value="x">
                                     </form>
                                     <?php
                     }

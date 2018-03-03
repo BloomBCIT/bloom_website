@@ -54,8 +54,8 @@
 
 }
 #map {
-        height: 400px;
-        width: 100%;
+        height: 60vh;
+        width:100%;
         margin-bottom: 2em;
 }
 .navbar-nav {
@@ -65,8 +65,7 @@
 	position: fixed !important;
 }
 
-
-
-
-
-
+.reviewtext {
+	width:80% !important;
+	float:left !important;
+}

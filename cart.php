@@ -116,7 +116,7 @@
                     <li class="row">
                         <span class="quantity"><?php echo $item['quantity']?></span>
                         <span class="itemName"><?php echo $row['product_name']?></span>
-                        <span class="popbtn"><a class="arrow"></a></span>
+                       
                         <span class="price">$<?php echo number_format($row['price']*$item['quantity'],2) ;?></span>
                     </li>
                                 <?php
