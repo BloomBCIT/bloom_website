@@ -63,7 +63,7 @@
                         <a class="nav-link" href="cart.php">Cart</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.html">Login</a>
+                        <a class="nav-link" href="login.html" id="loginText">Login</a>
                     </li>
                 </ul>
             </div>
@@ -94,7 +94,16 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    <script type="text/javascript">
+    $(document).ready(function(){
+        if(sessionStorage.getItem('myUserEntity') == null){
+            $("#loginText").html("Login");
+        }
+        else{
+            $("#loginText").html("My Page");
+        }
+    });
+    </script>
 </body>
 
 </html>

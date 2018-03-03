@@ -69,8 +69,7 @@
                         <a class="nav-link" href="cart.php">Cart</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="login.html">Login
-              <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="login.html" id="loginText">Login</a>
                     </li>
                 </ul>
             </div>
@@ -112,6 +111,17 @@
     </footer>
 <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+        if(sessionStorage.getItem('myUserEntity') == null){
+            $("#loginText").html("Login");
+        }
+        else{
+            $("#loginText").html("My Page");
+        }
+    });
+    </script>
     <script>
         var googleSign = document.getElementById("googleSign");
         var showingEmail = document.getElementById("showingEmail");
@@ -147,23 +157,29 @@
                 body: form
             }).then((resp) => {
                 console.log(resp);
-                return resp.json();
+                // return resp.json();
             }).then((json) => {
                 console.log(json);
             });
             
             loBtn.style.display="block";
             
+            var myUserEntity = {};
+              myUserEntity.Id = profile.getId();
+              myUserEntity.Name = profile.getName();
+            //Store the entity object in sessionStorage where it will be accessible from all pages of your site.
+            sessionStorage.setItem('myUserEntity',JSON.stringify(myUserEntity));
         }
 
         function signOut() {
+            console.log(showingEmail);
             var logoutAuth = gapi.auth2.getAuthInstance();
-
             logoutAuth.signOut().then(function() {
-                showingEmail.style.display = "none";
-                showingName.style.display = "none";
-                googleSign.style.display = "block";
+                sessionStorage.clear();
                 loBtn.style.display = "none";
+                showingName.style.display= "none";
+                showingEmail.style.display = "none";
+                googleSign.style.display = "block";
                 console.log('sign out succeeded');
             });
         }

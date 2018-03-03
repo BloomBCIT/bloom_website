@@ -25,6 +25,24 @@
     <!-- Navigation -->
     <?php include 'navigation.php';?>
 
+<script type="text/javascript">
+    $(document).ready(function(){
+        // alert("Test");
+    });
+
+    function validateCartForm(){
+        if(sessionStorage.getItem('myUserEntity') == null) {
+            if (confirm("You need to login to add item to the cart.  Do you want to login?"))
+            {
+                window.location.replace("login.html");
+            }
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
         <!-- Page Content -->
         <div class="container">
             <?php
@@ -59,10 +77,10 @@
                         <h1><?php echo $row['product_name']; ?></h1>
                         <h2>$ <?php echo number_format($row['price'], 2); ?></h2>
 
-                        <form action="cart.php" method="GET">
+                        <form action="cart.php" method="POST" onsubmit="return validateCartForm();">
                             <input type="hidden" name="product_id" value="<?php echo $_GET['product_id'];?>">
                             <div>
-                                <input type="number" name="quantity" placeholder="0">
+                                <input type="number" min="1" value="1" name="quantity" placeholder="0">
                             </div>
 
                             <br>
@@ -92,7 +110,7 @@
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
                 } else{  
-                     echo "database succesfully connected"; 
+                    
                 }     
 
                 //store data
@@ -100,11 +118,11 @@
                 {
                     $sql = 'INSERT INTO review SET
                         reviewtext="' . $_POST['reviewtext']. '",
-                        reviewdate="' . $_POST['reviewdate']. '",
+                        reviewdate="' . date("Y-m-d", time()). '",
                         product_id="' . $_POST['product_id']. '"';
 
                     if($conn->query($sql) === TRUE) {
-                        echo "New record created successfully";
+                        // echo "New record created successfully";
 
                     } else {
                         echo"Error:" . $sql. "<br>" . $conn->error;
@@ -115,7 +133,7 @@
                     $sql= 'DELETE FROM  review WHERE review_id='. $_POST['review_id'];
 
                     if($conn->query($sql) === TRUE) {
-                        echo "Record deleted successfully";
+                       
                     } else {
                         echo "Error deleting record: " . $conn->error;
                     }
@@ -130,7 +148,7 @@
 
                     while($row = $result->fetch_assoc()) {
                     echo "<form action='?delete&product_id=$pid' method='post' style='clear:both;'>";
-                    echo "<p style='display:inline;'>". $row["review_id"]. " - ". $row["reviewtext"]. 
+                    echo "<p style='display:inline;'>".  " - ". $row["reviewtext"]. 
                     " (posted on " . $row["reviewdate"] . ")</p>";?>
                                     <input type="hidden" name="review_id" value="<?php
                         echo $row['review_id']; ?>">
