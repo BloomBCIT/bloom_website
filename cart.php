@@ -120,11 +120,21 @@
                                             <span class="itemName"><?php echo $row['product_name']?></span>
 
                                             <span class="price">$<?php echo number_format($row['price']*$item['quantity'],2) ;?></span>
-                                            <input type="submit" name="delete" value="x" class="btn"/>
+                                            <!-- remove-->
+                                            <input type="submit" name="remove" value="x" class="btn"/>
                                         </li>
                                         <?php
                             }
                         }
+                        //remove
+                        else if (isset($_POST['remove'])) {
+                            $i=array_search($_GET['carts'],$_SESSION['carts']);
+                            if($i!==false){
+                            unset($_SESSION['carts'][$i]);
+                            $_SESSION["carts"] = array_values($_SESSION["carts"]);
+                            }
+                        }
+                        //end of remove 
                     ?>
 
                                 </ul>
