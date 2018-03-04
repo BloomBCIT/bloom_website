@@ -113,3 +113,7 @@
     background-size: cover;
 }
 
+#showingPic{
+    display:none;
+    margin: auto;
+}

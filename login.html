@@ -85,12 +85,15 @@
                 <br/>
             </p>
             <div class="login-card" id="loginCard">
+                
+                <img id='showingPic' class="img-circle" width="100" height="100"/>
+                
                 <p id="showingName"></p>
                 <p id="showingEmail"></p>
                 <br/>
                 <br/>
                 <form id="loginform">
-                    <div id="googleSign" class="g-signin2" data-onsuccess="signIn" data-width="300" data-height="40" data-longtitle="true">Login With Google</div>
+                    <div id="googleSign" class="g-signin2" data-onsuccess="signIn" data-width="250" data-height="40" data-longtitle="true">Login With Google</div>
 
                 </form>
                 <div id="signoutDiv">
@@ -124,6 +127,8 @@
     </script>
     <script>
         var googleSign = document.getElementById("googleSign");
+        
+        var showingPic = document.getElementById("showingPic");
         var showingEmail = document.getElementById("showingEmail");
         var showingName = document.getElementById("showingName");
         var loBtn = document.getElementById("loBtn");
@@ -132,16 +137,20 @@
             var profile = googleUser.getBasicProfile();
             googleSign.style.display = "none";
             
+            $("#showingPic").attr('src', profile.getImageUrl());
+            
+            showingPic.style.display = "block";
+            
             showingName.style.display = "block";
             showingName.innerText = "Welcome! "+ profile.getName();
             
             showingEmail.style.display = "block";
             showingEmail.innerText = profile.getEmail();
             
-
             //get user values;
             var userkey = profile.Eea;
             console.log(userkey);
+            
             var email = profile.getEmail();
             console.log(email);
             var name = profile.getName();
@@ -179,6 +188,7 @@
                 loBtn.style.display = "none";
                 showingName.style.display= "none";
                 showingEmail.style.display = "none";
+                showingPic.style.display ="none";
                 googleSign.style.display = "block";
                 console.log('sign out succeeded');
             });
