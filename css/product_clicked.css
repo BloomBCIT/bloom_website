@@ -46,20 +46,32 @@ p{
 
 
 .col-1-2{
-  width: 50%;
-  height: 100%;
-  float: left;
+  
 }
 
+
+
+
 .product-image{
+    width: 50%;
+    height: 100%;
+    float: left;
+/*    width:100%;*/
   /*border: 1px dotted #aaa;*/
 }
+
+#img_product1{
+    width:100%;
+    
+}
+
+/*
 
 .product-image .bg{
   background-image: url('../img/product1.png');
   background-size: cover;
   background-position: center top;
-  width: 100%;
+  width: 80%;
   min-height: 450px;
 }
 
@@ -78,13 +90,16 @@ p{
   -webkit-transition: all 400ms ease;
   transition: all 400ms ease;
 }
+*/
 
 .dot:hover{
   background-color: #444;
 }
 
 .product-info{
-  padding: 0px 8%;
+    width: 50%;
+    height: 100%;
+    float: left;
 }
 
 .product-info h1{

@@ -76,6 +76,10 @@
                     <div class="col-1-2 product-info">
                         <h1><?php echo $row['product_name']; ?></h1>
                         <h2>$ <?php echo number_format($row['price'], 2); ?></h2>
+                        
+                         <p>
+                            <?php echo $row['description']; ?>
+                        </p>
 
                         <form action="cart.php" method="POST" onsubmit="return validateCartForm();">
                             <input type="hidden" name="product_id" value="<?php echo $_GET['product_id'];?>">
@@ -87,10 +91,6 @@
                             <button type="submit" class="btn btn-secondary">Add To Cart</button>
                         </form>
 
-                        
-                        <p>
-                            <?php echo $row['description']; ?>
-                        </p>
 
                     </div>
                 </div>
