@@ -48,6 +48,12 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+.my-5 {
+	background: url(../img/4.jpg) !important;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+}
 
 .col-xs-9{
 	text-align: center !important;

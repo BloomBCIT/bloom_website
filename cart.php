@@ -54,7 +54,7 @@
             <div class="container">
 
                 <!-- Jumbotron Header -->
-                <header class="jumbotron my-3">
+                <header class="jumbotron my-5">
                     <h1 class="display-3">Your Cart</h1>
 
                 </header>
@@ -120,6 +120,7 @@
                                             <span class="itemName"><?php echo $row['product_name']?></span>
 
                                             <span class="price">$<?php echo number_format($row['price']*$item['quantity'],2) ;?></span>
+                                            <input type="submit" name="delete" value="x" class="btn"/>
                                         </li>
                                         <?php
                             }
