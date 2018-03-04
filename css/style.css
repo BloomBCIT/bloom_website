@@ -70,6 +70,7 @@
 	float:left !important;
 }
 
+
 #loBtn{
     display: none;
     width:100%;
@@ -82,24 +83,27 @@
 }
 
 #loginCard{
-    width:50%;
+    width:90%;
     margin:auto;
     
 }
 
-#loginform{
-    width:300px;    
-    margin:auto;
-}
-
-
 #signoutDiv{
-    width:30%;
+    width:50%;
     margin: auto;
 }
 
 #loginform{
-    width:300px;    
+    width:100%;    
+    margin:auto;
+}
+
+.abcRioButton{
+    width:100%;
+}
+
+.abcRioButtonLightBlue{
+    width:100%;
     margin:auto;
 }
 
