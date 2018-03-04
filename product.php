@@ -40,11 +40,8 @@
     <!-- /.container -->
     <div class="row text-center">
 
+        <?php include 'dbconnection.php';?>
         <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "root";
-                $dbname = "bloom";
 
                 try {
                     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

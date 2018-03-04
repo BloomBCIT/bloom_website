@@ -68,21 +68,32 @@
                     </div>
                     <?php
 
+                        //remove
+                        if (isset($_POST['delete_item'])) {
+                            unset($_SESSION['carts'][$_POST['product_id']]);
+                        }
+                        //end of remove 
+
                 if (isset($_POST['product_id']) && isset($_POST['quantity']))
                 {
-                    $carts = $_SESSION['carts'];
-
+                    $carts = isset($_SESSION['carts']) ? $_SESSION['carts'] : array();
                     $product["product_id"] = $_POST['product_id'];
                     $product["quantity"] = $_POST['quantity'];
 
-                    $_SESSION['carts'][] = $product;
+                    if (array_key_exists($product['product_id'], $carts))
+                    {
+                        $carts[$product['product_id']] = $carts[$product['product_id']] + $product['quantity'];
+                    }
+                    else {
+                        $carts[$product['product_id']] = $product['quantity'];
+                    }
+
+                    $_SESSION['carts'] = $carts;
                 }
             ?>
+
+        <?php include 'dbconnection.php';?>
                         <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "root";
-                $dbname = "bloom";
 
                 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -99,12 +110,17 @@
                         if (isset($_SESSION['carts']))
                         {
                             $carts = $_SESSION['carts'];
-                            for ($i = 0; $i < count($carts); $i++)
+
+                            foreach ($carts as $product_id => $quantity)
                             {
-                                $item = $carts[$i];
+
+                            // }
+                            // for ($i = 0; $i < count($carts); $i++)
+                            // {
+                            //     $item = $carts[$i];
 
                                 try {
-                                    $stmt = $conn->prepare("SELECT * FROM products WHERE product_id = '".$item['product_id']."'"); 
+                                    $stmt = $conn->prepare("SELECT * FROM products WHERE product_id = '".$product_id."'"); 
                                     $stmt->execute();
                                     // set the resulting array to associative
                                     $row = $stmt->fetch(PDO::FETCH_ASSOC); 
@@ -113,37 +129,31 @@
                                     echo "Error: " . $e->getMessage();
                                 }
 
-                                $totalPrice = $totalPrice + $row['price']*$item['quantity'];
+                                $totalPrice = $totalPrice + $row['price']*$quantity;
                                 ?>
                                         <li class="row">
-                                            <span class="quantity"><?php echo $item['quantity']?></span>
+                                            <span class="quantity"><?php echo $quantity?></span>
                                             <span class="itemName"><?php echo $row['product_name']?></span>
 
-                                            <span class="price">$<?php echo number_format($row['price']*$item['quantity'],2) ;?></span>
+                                            <span class="price">$<?php echo number_format($row['price']*$quantity,2) ;?></span>
                                             <!-- remove-->
+                                            <form action="cart.php" method="POST">
+                                                <input type="hidden" name="delete_item" value="1"/>
+                                                <input type="hidden" name="product_id" value="<?php echo $product_id; ?>"/>
                                             <input type="submit" name="remove" value="x" class="btn"/>
+                                            </form>
                                         </li>
                                         <?php
                             }
                         }
-                        //remove
-                        else if (isset($_POST['remove'])) {
-                            $i=array_search($_GET['carts'],$_SESSION['carts']);
-                            if($i!==false){
-                            unset($_SESSION['carts'][$i]);
-                            $_SESSION["carts"] = array_values($_SESSION["carts"]);
-                            }
-                        }
-                        //end of remove 
                     ?>
 
                                 </ul>
                             </div>
                             <div class="col-md-7 col-sm-12 text-left">
                                 <p>Total : <span id="totalPrice"> <?php echo number_format($totalPrice, 2); ?> </span></p>
-                                <a href="" class="btn  btn-secondary">Check Out</a>
+                                <a href="checkout.php" class="btn  btn-secondary">Check Out</a>
                             </div>
-
                 </div>
 
             </div>

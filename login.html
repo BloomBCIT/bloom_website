@@ -103,6 +103,11 @@
         </main>
 
     </div>
+    <form name="loginRedirectForm" id ="loginRedirectForm" action="login.php" method="POST">
+        <input type="hidden" name="userkey" id="userkey" value=""/>
+        <input type="hidden" name="name" id="name" value=""/>
+        <input type="hidden" name="email" id="email" value=""/>
+    </form>
     <!-- /.container -->
 
     <!-- Footer -->
@@ -172,12 +177,20 @@
             });
             
             loBtn.style.display="block";
-            
+            var isLogincache = sessionStorage.getItem('myUserEntity') == null
             var myUserEntity = {};
               myUserEntity.Id = profile.getId();
               myUserEntity.Name = profile.getName();
             //Store the entity object in sessionStorage where it will be accessible from all pages of your site.
             sessionStorage.setItem('myUserEntity',JSON.stringify(myUserEntity));
+
+            if (isLogincache)
+            {
+                document.getElementById("userkey").value = userkey;
+                document.getElementById("name").value = name;
+                document.getElementById("email").value = email;
+                document.getElementById("loginRedirectForm").submit();   
+            }
         }
 
         function signOut() {
@@ -191,6 +204,7 @@
                 showingPic.style.display ="none";
                 googleSign.style.display = "block";
                 console.log('sign out succeeded');
+                window.location.href= "logout.php";
             });
         }
     </script>

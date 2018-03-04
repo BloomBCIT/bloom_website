@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,11 +48,9 @@
 </script>
         <!-- Page Content -->
         <div class="container">
+
+        <?php include 'dbconnection.php';?>
             <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "root";
-                $dbname = "bloom";
 
                 try {
                     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -100,10 +101,6 @@
                 <div>
                     <?php include 'quotes_adding.php';?>
                         <?php 
-                $servername = "localhost";
-                $username = "root";
-                $password = "root";
-                $dbname = "bloom";
 
                 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -119,7 +116,8 @@
                     $sql = 'INSERT INTO review SET
                         reviewtext="' . $_POST['reviewtext']. '",
                         reviewdate="' . date("Y-m-d", time()). '",
-                        product_id="' . $_POST['product_id']. '"';
+                        product_id="' . $_POST['product_id']. '",
+                        userkey="' . $_POST['userkey'] . '"';
 
                     if($conn->query($sql) === TRUE) {
                         // echo "New record created successfully";
@@ -140,7 +138,8 @@
                 }
 
                 //retrieve data from table
-                $sql = "SELECT review_id, reviewtext, reviewdate FROM review WHERE product_id = '".$_GET['product_id']."'";
+                $sql = "SELECT review.userkey, review.review_id, review.reviewtext, review.reviewdate, users.name FROM review JOIN users ON review.userkey = users.userkey WHERE review.product_id = '".$_GET['product_id']."'";
+                
                 $result = $conn->query($sql);
                 //Determines if there are results
                 $pid = $_GET['product_id'];
@@ -148,11 +147,17 @@
 
                     while($row = $result->fetch_assoc()) {
                     echo "<form action='?delete&product_id=$pid' method='post' style='clear:both;'>";
-                    echo "<p style='display:inline;'>".  " - ". $row["reviewtext"]. 
+                    echo "<p style='display:inline;'>". $row['name'] ." - ". $row["reviewtext"]. 
                     " (posted on " . $row["reviewdate"] . ")</p>";?>
                                     <input type="hidden" name="review_id" value="<?php
                         echo $row['review_id']; ?>">
+                        <?php 
+                        if (isset($_SESSION["userkey"]) && $_SESSION['userkey'] == $row['userkey']) {
+                        ?>
                                     <input type="submit" class="btn btn-secondary" value="x">
+                        <?php
+                        }
+                        ?>
                                     </form>
                                     <?php
                     }
