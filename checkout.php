@@ -118,7 +118,7 @@
         unset($_SESSION['carts']);
         ?>
         <script type="text/javascript">
-        	alert("Thanks for your order.");
+        	alert("Thanks for your order! We will send you an invoice shortly, via email.  ");
         	window.location.replace("index.html");
         </script>
         <?

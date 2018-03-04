@@ -154,7 +154,7 @@ session_start();
                         <?php 
                         if (isset($_SESSION["userkey"]) && $_SESSION['userkey'] == $row['userkey']) {
                         ?>
-                                    <input type="submit" class="btn btn-secondary" value="x">
+                                    <input type="submit" class="btn" value="x">
                         <?php
                         }
                         ?>
