@@ -91,24 +91,14 @@ a:hover {
 ----------------------------------- */
 
 
-.col-md-5.col-sm-12{
-	padding: 0;
-}
-
 .col-md-5.col-sm-12 h1{
 	color: #595c5f;
-	font-size: 24px;
+	font-size: 30px;
 	font-weight: bold;
 	margin-bottom:30px;
-	text-align: left;
+	text-align: center;
 }
 
-.col-md-5.col-sm-12 p{
-	color: #898e92;
-	line-height: 1.5;
-	max-width: 400px;
-	text-align: justify;
-}
 
 .bigcart{
 	background:url(../img/sprite.png);
@@ -116,7 +106,6 @@ a:hover {
 	background-repeat:no-repeat;
 	width: 155px;
 	height: 120px;
-	margin:0 0 40px 60px;
 }
 
 
@@ -125,8 +114,8 @@ a:hover {
 -----------------------------------*/
 
 .col-md-7.col-sm-12{
-	padding-left: 50px ;
-	margin-bottom: 72px;
+  margin: auto; 
+    
 }
 
 .row{
@@ -160,11 +149,11 @@ a:hover {
 	padding: 0 21px 0 0;
 }
 
-.columnCaptions span:last-child{
-	float: right;
-	padding-right: 72px;
+.cartPrice{
+    right: 0;
+    position: absolute;
+    margin-right: 50px;
 }
-
 
 /* Items */
 

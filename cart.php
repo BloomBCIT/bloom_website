@@ -103,7 +103,7 @@
                                     <li class="row list-inline columnCaptions">
                                         <span>QTY</span>
                                         <span>ITEM</span>
-                                        <span>Price</span>
+                                        <span class="cartPrice">Price</span>
                                     </li>
                                     <?php
                             $totalPrice = 0;
