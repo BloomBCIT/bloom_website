@@ -152,7 +152,7 @@ a:hover {
 .cartPrice{
     right: 0;
     position: absolute;
-    margin-right: 50px;
+    margin-right: 100px;
 }
 
 /* Items */
@@ -198,7 +198,9 @@ a:hover {
 	color: #f06953;
 	font-size :18px;
 	font-weight: bold;
-	float: right;
+	right:0;
+    position: absolute;
+    margin-right: 5%;
 }
 
 
@@ -273,6 +275,10 @@ a:hover {
 /* Tablet size */
 
 @media (max-width: 992px) {
+    
+    .itemName{
+        width:60%;
+    }
 
 	.cart.text-center{
 		padding: 0 15px;
@@ -295,10 +301,7 @@ a:hover {
 		text-align: justify;
 	}
 
-	.col-md-7.col-sm-12{
-		padding-left: 10px ;
-		padding-right: 50px;
-	}
+	
 
 	.totals{
 		box-shadow: 0 0 0;
@@ -367,6 +370,10 @@ a:hover {
 		height:40px;
 		right: 0;
 	}
+    
+    .itemName{
+        width:40%;
+    }
 
 	.price{	
 		position: absolute;

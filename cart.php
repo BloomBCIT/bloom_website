@@ -137,7 +137,7 @@
 
                                             <span class="price">$<?php echo number_format($row['price']*$quantity,2) ;?></span>
                                             <!-- remove-->
-                                            <form action="cart.php" method="POST">
+                                            <form class="removeX" action="cart.php" method="POST">
                                                 <input type="hidden" name="delete_item" value="1"/>
                                                 <input type="hidden" name="product_id" value="<?php echo $product_id; ?>"/>
                                             <input type="submit" name="remove" value="x" class="btn"/>

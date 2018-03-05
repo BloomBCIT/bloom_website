@@ -137,3 +137,31 @@
     margin: auto;
     text-align: center;
 }
+
+.removeX{
+    margin-top: 2%;
+    right:0;
+    position: absolute;
+   
+}
+
+.removeX input{
+    color: red;
+    background-color: transparent;
+    
+}
+
+.text-left{
+    text-align: center!important;
+}
+
+.text-left p{
+    text-align: right;
+}
+
+.text-left a{
+    margin: auto;
+    left:0;
+    right:0;
+    
+}
